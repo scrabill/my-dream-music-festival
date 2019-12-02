@@ -1,6 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.png";
+import Spotify from "spotify-web-api-js";
+import "./App.css";
+
+// Returns an access token that can be used in the `setAccessToken` function of the
+// spotify-web-api library. Example:
+// const accessToken = await getAccessToken();
+// const spotify = new Spotify();
+// spotify.setAccessToken(accessToken)
+async function getAccessToken() {
+  const response = await fetch(
+    "https://assignment.convertkit.dev/.netlify/functions/auth-spotify"
+  );
+
+  const json = await response.json();
+
+  return json.access_token;
+}
 
 function App() {
   return (
@@ -10,14 +26,6 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
