@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+REPO_NAME=react-engineer-assignment
+
+echo "GitHub username to assign:"
+read username
+
+new_repo_name=$REPO_NAME-$username
+hub create -p convertkit/$new_repo_name
+
+oauth_user=`grep 'user:' $HOME/.config/hub | tail -n1 | awk '{ print $2}'`
+oauth_token=`grep 'oauth_token:' $HOME/.config/hub | tail -n1 | awk '{ print $2}'`
+
+curl -u "$user:$oauth_token" -X PUT -d '' "https://api.github.com/repos/convertkit/$new_repo_name/collaborators/$username?permission=push"
+
+hub remote add -p $new_repo_name convertkit/$new_repo_name
+git push $new_repo_name master

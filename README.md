@@ -11,7 +11,7 @@ you made based on these constraints when you create your pull request.
 We've set up `create-react-app` in this repo, and you should be able to get dependencies installed with `yarn install` and the app running with `yarn run`. If not, let us know and we'll help out. From here, we want you to build an app using the Spotify API and these features:
 
 - A user can search for an artist, and see results as they type
-- A user can click on an artist to see the artists top tracks
+- A user can click on an artist to see the artist's top tracks
 
 Everything about the implementation is up to you, including the use of `create-react-app`. If you're more comfortable with something else, feel free to use that. We recommend using the included [Spotify Web API JS](https://github.com/JMPerez/spotify-web-api-js) library to make requests to Spotify. Example authentication code is provided in `App.js`.
 
