@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import logo from "./logo.png";
 import Spotify from "spotify-web-api-js";
-// import Search from './Search.js'
 import "./App.css";
 
 // Returns an access token that can be used in the `setAccessToken` function of the
@@ -25,9 +23,8 @@ function App() {
 
   const [input, setInput] = useState("")
   const [artists, setArtists] = useState([])
-  // const [spotify] = useState(new Spotify())
   const spotify = new Spotify();
-  spotify.setAccessToken("BQDMYl2DGzfpEaE5aUg4fTI6Zj21DV6gdAM6drJqdOtbyay9HWVf1Hc71j0XsmNmFRrlFL7pE8EInun4bQQ") // How can I store this token locally so I don't have to redo this request?
+  spotify.setAccessToken(getAccessToken()) // Access token may need to be hard coded for demo purposes
 
   console.log(spotify)
 
@@ -51,7 +48,6 @@ function App() {
         console.log(data.artists.items);
         setArtists(data.artists.items)
         renderArtists()
-        // renderArtists(data.artists.items)
       },
       function (err) {
         console.error(err);
@@ -60,9 +56,9 @@ function App() {
   }
   
   function renderArtists() {
-    const allArtists = {artists}.forEach(artist => artist.name) 
-    
-    return allArtists
+    console.log(artists)
+
+    return artists.map(artist => <p><a href={artist.external_urls.spotify}>{artist.name}</a></p>)
   }
 
   return (
@@ -77,9 +73,8 @@ function App() {
         </form>
 
 
+      {renderArtists()}
 
-
-        {artists}
 
       </header>
     </div>
