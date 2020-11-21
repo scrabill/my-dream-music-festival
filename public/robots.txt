@@ -1,2 +1,2 @@
-# https://www.robotstxt.org/robotstxt.html
+s# https://www.robotstxt.org/robotstxt.html
 User-agent: *
